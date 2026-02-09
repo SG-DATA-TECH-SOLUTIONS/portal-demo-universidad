@@ -1,0 +1,176 @@
+.chatbot-container {
+  flex: 1;
+  display: flex;
+  height: calc(100vh - 56px);
+}
+
+.chat-list {
+  width: 20%;
+  background: hsl(216, 100%, 75%);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-list-scroll {
+  margin-top: 8px;
+  overflow-y: auto;
+  flex: 1;
+  padding-right: 4px;
+}
+
+.logo {
+  width: 120px;
+  display: block;
+  margin: auto;
+}
+
+.new-chat-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  background-color: #3B82F6;
+  color: #000;
+
+  border: none;
+  border-radius: 10px;
+
+  padding: 6px 12px;
+  margin: 8px 0;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+  align-self: flex-start;
+
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+/* Hover */
+.new-chat-button:hover {
+  opacity: 0.9;
+}
+
+/* Click (pseudo-ripple) */
+.new-chat-button:active {
+  transform: scale(0.97);
+}
+
+/* Icon */
+.icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.icon-svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.8;
+}
+
+
+.chat-item {
+  background: #3B82F6;
+  width: 90%;
+  margin: 6px 0;
+  padding: 6px;
+  border-radius: 6px;
+}
+
+.chat {
+  width: 75%;
+  padding: 16px;
+  margin-left: 20px;
+  height: 100%;
+}
+
+.chat-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  padding-top: 0px;
+  height: calc(100% - 120px);
+  display: flex;
+  flex-direction: column;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.message {
+  max-width: 80%;
+  width: fit-content; 
+  position: relative;
+  padding: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.message-time {
+  font-size: 11px;
+  opacity: 0.6;
+  position: absolute;
+  bottom: 4px;
+  right: 8px;
+}
+
+.user .message-time {
+  text-align: right;
+}
+
+.bot {
+  background: #6b728047;
+}
+
+.user {
+  background: hsl(216, 100%, 75%);
+  margin-left: auto;
+}
+
+.input-area {
+  border-top: 1px solid #ccc;
+  padding-top: 8px;
+}
+
+.input-row {
+  display: flex;
+  gap: 6px;
+}
+
+.input-row input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+}
+
+.icon-button {
+  background-color: #3B82F6;
+  color: #fff;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+/* Hover */
+.icon-button:hover {
+  opacity: 0.9;
+}
+
+/* Click (pseudo-ripple) */
+.icon-button:active {
+  transform: scale(0.97);
+}
+
+.attachment {
+  background: #f4f1ed;
+  padding: 4px 8px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}

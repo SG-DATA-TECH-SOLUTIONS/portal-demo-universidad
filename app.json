@@ -1,0 +1,58 @@
+{
+  "expo": {
+    "name": "agente-web",
+    "slug": "magente-web",
+    "version": "1.0.0",
+    "orientation": "default",
+    "icon": "./assets/images/logo_macanudo.png",
+    "scheme": "agenteweb",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.carlosbrc.macanudo",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#8b5f41",
+        "foregroundImage": "./assets/images/logo_macanudo.png"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "package": "com.carlosbrc.macanudo"
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/logo_macanudo.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/logotipo_macanudo.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#8b5f41",
+          "dark": {
+            "backgroundColor": "#8b5f41"
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "bf70918a-4fb9-40f9-b148-cfe236885785"
+      }
+    },
+    "owner": "sg-data-tech-solutions"
+  }
+}
