@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import LoginScreen from "./LoginScreen";
 import ChatbotScreen from "./ChatbotScreen";
-import "./styles/App.css";
+import "./styles/index.css";
 import { Image, View } from "react-native";
 import logotipo from "./logotipo.jpeg";
 

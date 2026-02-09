@@ -1,7 +1,7 @@
 import { useMaterial3Theme } from '@pchmn/expo-material3-theme';
+import { Slot } from 'expo-router';
 import { useColorScheme } from 'react-native';
 import { MD3DarkTheme, MD3LightTheme, PaperProvider } from 'react-native-paper';
-import App from './App';
 
 export default function Main() {
   const colorScheme = useColorScheme();
@@ -9,9 +9,9 @@ export default function Main() {
 
   const paperTheme =
     colorScheme === 'dark'
-      ? { 
-        ...MD3DarkTheme, 
-        colors: { 
+      ? {
+        ...MD3DarkTheme,
+        colors: {
           ...theme.dark,
           brandPrimary: '#ff0000ff',
           brandSecondary: 'red',
@@ -19,7 +19,7 @@ export default function Main() {
       }
       : {
         ...MD3LightTheme,
-        colors: { 
+        colors: {
           ...theme.light,
           brandPrimary: '#ff0000ff',
           brandSecondary: 'red',
@@ -28,7 +28,7 @@ export default function Main() {
 
   return (
     <PaperProvider theme={paperTheme}>
-      <App />
+      <Slot />
     </PaperProvider>
   );
 }
