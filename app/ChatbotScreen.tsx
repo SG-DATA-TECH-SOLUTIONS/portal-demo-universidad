@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { PaperClipIcon, PaperAirplaneIcon, PencilIcon, ChatBubbleOvalLeftIcon } from "@heroicons/react/24/outline";
 import { Pencil, BotMessageSquare , Paperclip, SendHorizontal } from 'lucide-react';
+import { Image, View } from "react-native";
+import avatar from "../assets/images/avatar.jpeg";
 import "./styles/ChatbotScreen.css";
 
 type ChatMessage = {
@@ -126,24 +128,104 @@ const getBotResponse = async (userMessage: string,): Promise<string> => {
     <div className="chatbot-container">
       {/* LEFT */}
       <aside className="chat-list">
-        <button className="new-chat-button" onClick={() => console.log("Nuevo chat")}>
-            <Pencil className="icon-svg" />
-            <span>Nuevo chat</span>
-        </button>
 
         <h4>Conversaciones</h4>
         <div className="chat-list-scroll">
-          <div className="chat-item">📁 Emily Johnson (+1 415 555 0198) · What is the contact email?</div>
-          <div className="chat-item">📁 Pierre Laurent (+33 6 12 34 56 78) · Où se situe l'université?</div>
-          <div className="chat-item">📁 Juan Pérez (+34 612 345 678) · Precio curso inglés</div>
-          <div className="chat-item">📁 Marie Dupont (+33 6 45 78 91 23) · Cours de français</div>
-          <div className="chat-item">📁 Ahmed Benali (+212 612 987 654) · Visa requirements</div>
-          <div className="chat-item">📁 Laura Gómez (+34 699 112 233) · Horarios del Centro</div>
-          <div className="chat-item">📁 John Smith (+44 7700 900123) · English summer course</div>
-          <div className="chat-item">📁 Sofía Martínez (+34 622 445 889) · Matrícula reducida</div>
-          <div className="chat-item">📁 Paul Martin (+33 7 88 55 44 11) · Paiement et inscription</div>
-          <div className="chat-item">📁 Carlos Núñez (+34 655 778 990) · Cursos intensivos</div>
-        </div>
+  <div className="chat-item">
+    <View
+      style={{
+        width: 40,
+        height: 40,
+        borderRadius: 20,
+        overflow: "hidden",
+      }}
+    >
+      <Image
+        source={avatar}
+        style={{
+          width: "100%",
+          height: "100%",
+        }}
+        resizeMode="cover"
+      />
+    </View><span>Emily Johnson</span>
+  </div>
+
+  <div className="chat-item">
+    <View
+      style={{
+        width: 40,
+        height: 40,
+        borderRadius: 20,
+        overflow: "hidden",
+      }}
+    >
+      <Image
+        source={avatar}
+        style={{ width: "100%", height: "100%" }}
+        resizeMode="cover"
+      />
+    </View>
+    <span>Pierre Laurent</span>
+  </div>
+
+  <div className="chat-item">
+    <View style={{ width: 40, height: 40, borderRadius: 20, overflow: "hidden" }}>
+      <Image source={avatar} style={{ width: "100%", height: "100%" }} resizeMode="cover" />
+    </View>
+    <span>Juan Pérez</span>
+  </div>
+
+  <div className="chat-item">
+    <View style={{ width: 40, height: 40, borderRadius: 20, overflow: "hidden" }}>
+      <Image source={avatar} style={{ width: "100%", height: "100%" }} resizeMode="cover" />
+    </View>
+    <span>Marie Dupont</span>
+  </div>
+
+  <div className="chat-item">
+    <View style={{ width: 40, height: 40, borderRadius: 20, overflow: "hidden" }}>
+      <Image source={avatar} style={{ width: "100%", height: "100%" }} resizeMode="cover" />
+    </View>
+    <span>Ahmed Benali</span>
+  </div>
+
+  <div className="chat-item">
+    <View style={{ width: 40, height: 40, borderRadius: 20, overflow: "hidden" }}>
+      <Image source={avatar} style={{ width: "100%", height: "100%" }} resizeMode="cover" />
+    </View>
+    <span>Laura Gómez</span>
+  </div>
+
+  <div className="chat-item">
+    <View style={{ width: 40, height: 40, borderRadius: 20, overflow: "hidden" }}>
+      <Image source={avatar} style={{ width: "100%", height: "100%" }} resizeMode="cover" />
+    </View>
+    <span>John Smith</span>
+  </div>
+
+  <div className="chat-item">
+    <View style={{ width: 40, height: 40, borderRadius: 20, overflow: "hidden" }}>
+      <Image source={avatar} style={{ width: "100%", height: "100%" }} resizeMode="cover" />
+    </View>
+    <span>Sofía Martínez</span>
+  </div>
+
+  <div className="chat-item">
+    <View style={{ width: 40, height: 40, borderRadius: 20, overflow: "hidden" }}>
+      <Image source={avatar} style={{ width: "100%", height: "100%" }} resizeMode="cover" />
+    </View>
+    <span>Paul Martin</span>
+  </div>
+
+  <div className="chat-item">
+    <View style={{ width: 40, height: 40, borderRadius: 20, overflow: "hidden" }}>
+      <Image source={avatar} style={{ width: "100%", height: "100%" }} resizeMode="cover" />
+    </View>
+    <span>Carlos Núñez</span>
+  </div>
+</div>
+
       </aside>
 
       {/* CHAT */}

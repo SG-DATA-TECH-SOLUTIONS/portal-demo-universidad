@@ -53,7 +53,7 @@ export default function App() {
 
         <div className="header-right">
           <button className="logout-button" onClick={handleLogout}>
-            Logout
+            Desconectar
           </button>
         </div>
       </header>
