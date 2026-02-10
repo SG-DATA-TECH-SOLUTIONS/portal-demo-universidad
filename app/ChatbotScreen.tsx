@@ -7,7 +7,7 @@ import "./styles/ChatbotScreen.css";
 type ChatMessage = {
   text: string;
   sender: "user" | "bot";
-  time: string;
+  time?: string;
   typing?: boolean;
 };
 
@@ -22,7 +22,6 @@ type Props = {
 export default function ChatbotScreen({ user }: Props) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [userInput, setUserInput] = useState("");
-  const [attachedFile, setAttachedFile] = useState<{uri: string; name: string; type: string;} | null>(null);
   const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
     const getCurrentTime = () => {
@@ -38,18 +37,6 @@ export default function ChatbotScreen({ user }: Props) {
   ]);
   const isBotTyping = messages.some((m) => m.typing);
 
- /* -------------------- FILE -------------------- */
-const pickFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-  if (!e.target.files?.[0]) return;
-
-  const file = e.target.files[0];
-  setAttachedFile({
-    uri: URL.createObjectURL(file), // 🔹 crea un URI temporal para mostrar el archivo
-    name: file.name,
-    type: file.type,
-  });
-};
-
 /* -------------------- SEND -------------------- */
 const handleSendMessage = async () => {
   if (!userInput.trim()) return;
@@ -58,23 +45,20 @@ const handleSendMessage = async () => {
   setMessages((prev) => [
     ...prev,
     {
-      text: attachedFile
-        ? `${userInput}\n📎 ${attachedFile.name}`
-        : userInput,
+      text: userInput,
       sender: "user",
       time: getCurrentTime(),
     },
   ]);
 
   setUserInput("");
-  setAttachedFile(null);
   await sleep(500);
 
   // Mensaje de bot "typing"
-  setMessages((prev) => [...prev, { text: "...", sender: "bot", typing: true, time: getCurrentTime(), }]);
+  setMessages((prev) => [...prev, { text: "...", sender: "bot", typing: true }]);
 
   const startTime = Date.now();
-  const botResponse = await getBotResponse(userInput, attachedFile);
+  const botResponse = await getBotResponse(userInput);
   const elapsed = Date.now() - startTime;
   if (elapsed < 1500) await sleep(1500 - elapsed);
 
@@ -89,18 +73,11 @@ const handleSendMessage = async () => {
 };
 
 /* -------------------- BOT -------------------- */
-const getBotResponse = async (
-  userMessage: string,
-  file?: { uri: string; name: string; type: string; rawFile?: File } | null
-): Promise<string> => {
+const getBotResponse = async (userMessage: string,): Promise<string> => {
   try {
     const formData = new FormData();
     formData.append("message", userMessage);
     formData.append("role", String(user.role));
-
-    if (file?.rawFile) {
-      formData.append("file", file.rawFile);
-    }
 
     // Ejemplo de llamada al backend
     const response = await fetch("https://agente-demo-git-467701688054.europe-west1.run.app/chat", {
@@ -188,28 +165,30 @@ const getBotResponse = async (
           </div>
 
           <div className="input-area">
-            {attachedFile && (
-              <div className="attachment">
-                📎 {attachedFile.name}
-                <button onClick={() => setAttachedFile(null)}>✖</button>
-              </div>
-            )}
+            <form
+              className="input-row"
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSendMessage();
+              }}
+            >
+              <textarea
+  value={userInput}
+  onChange={(e) => setUserInput(e.target.value)}
+  placeholder="Escribe un mensaje..."
+  rows={1}
+  onKeyDown={(e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
+    }
+  }}
+/>
 
-            <div className="input-row">
-              <input
-                value={userInput}
-                onChange={(e) => setUserInput(e.target.value)}
-                placeholder="Escribe un mensaje..."
-              />
-              <label className="icon-button">
-                <Paperclip className="icon-svg" />
-                <input type="file" hidden onChange={pickFile} />
-              </label>
-
-              <button className="icon-button" onClick={handleSendMessage}>
+              <button type="submit" className="icon-button">
                 <SendHorizontal className="icon-svg" />
               </button>
-            </div>
+            </form>
           </div>
         </div>
       </section>

@@ -41,17 +41,25 @@ export default function LoginScreen({ onLogin }: Props) {
 
       <h1 className="title">Acceso</h1>
 
-      <input
-        type="password"
-        className="input"
-        placeholder="Contraseña"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+      <form
+        style={{ display: "flex", flexDirection: "column", gap: "12px", alignItems: "center"}}
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleAdminLogin();
+        }}
+      >
+        <input
+          type="password"
+          className="input"
+          placeholder="Contraseña"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-      <button className="button admin-button" onClick={handleAdminLogin}>
-        Entrar
-      </button>
+        <button type="submit" className="button admin-button">
+          Entrar
+        </button>
+      </form>
     </div>
   );
 }

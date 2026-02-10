@@ -143,6 +143,19 @@
   gap: 6px;
 }
 
+.input-row textarea {
+  width: 100%;
+  resize: none;             
+  border: none;
+  border-radius: 8px;
+  outline-color: #2c62b9;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 1.4;
+  padding: 10px 12px;
+  background: transparent;
+}
+
 .input-row input {
   flex: 1;
   padding: 8px;
